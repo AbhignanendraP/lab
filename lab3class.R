@@ -1,0 +1,28 @@
+  rm(list=ls())
+  setwd("C:/Abhi notes/class3-2/eda/lab/Lab 3")
+  library(dplyr)
+  data2<-read.csv("weatherHistory2016.csv")
+  data2
+  train=sample_n(data2,100)
+  cor.test(train$Temperature..C.,train$Apparent.Temperature..C.)
+  cor.test(train$Temperature..C.,train$Humidity)
+  cor.test(train$Temperature..C.,train$Wind.Speed..km.h.)
+  cor.test(train$Temperature..C.,train$Wind.Bearing..degrees.)
+  cor.test(train$Temperature..C.,train$Visibility..km.)
+  cor.test(train$Temperature..C.,train$Pressure..millibars.)
+  lmodel<- lm(train$Temperature..C.~(train$Apparent.Temperature..C.+train$Humidity))
+  summary(lmodel)
+  print("by this inference the p value of b2,b1 and b0 are of less than 0.05 that means the model is0. significant")
+  
+  
+  library(forecast)
+  library(tseries)
+  weat<-read.csv("weatherHistory2016.csv")
+  weatts <- ts(weat$Temperature..C., start=as.Date("2016-01-01"), end=as.Date("2016-12-31"), frequency=24)
+  class(weatts)
+  plot(weatts)
+  gdpmodel=auto.arima(weatts,ic="aic",trace=TRUE)
+  gdpf=forecast(gdpmodel,level=c(95),h=2)
+  gdpf
+  plot(gdpf)
+  accuracy(gdpf)

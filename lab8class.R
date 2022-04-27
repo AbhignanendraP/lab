@@ -1,0 +1,12 @@
+rm(list=ls())
+setwd("C:/Abhi notes/class3-2/eda/lab/Lab 8")
+data<-read.csv("iris.csv",row.names=1)
+View(data)
+df<-scale(data)
+View(df)
+ed<-dist(df,method='euclidean')
+herclust<-hclust(ed,method='complete')
+plot(herclust)
+cluster1<-cutree(herclust,k=4)
+cluster1
+rect.hclust(herclust,k=4)
