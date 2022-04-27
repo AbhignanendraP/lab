@@ -1,1 +1,9 @@
-fasfsfsf
+lab1-linear regression
+lab2-time series forcasting
+lab4-anova
+lab5-logistic regression
+lab6-KNN
+lab7-kmeans and kmedoid
+lab8-hierachial clustering
+lab9-gradient descent algorithm
+lab10-movement gradient descent
